@@ -30,10 +30,12 @@ Codex picks the skill up on its own; restart Codex if it doesn't appear. Where C
 From inside the project you want to improve:
 
 ```
-/absorb <local-path>
+/absorb <github-url|local-path>
 ```
 
 Or just ask: "what can I learn from `<repo>`?"
+
+A GitHub URL is shallow-cloned into your OS temp directory for the run and deleted when it ends.
 
 The skill asks you twice: once to correct how it understood your project, and once to pick lessons from the brief. The only file it writes in your project is the report.
 

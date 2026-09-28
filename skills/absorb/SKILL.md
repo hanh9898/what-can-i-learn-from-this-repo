@@ -1,12 +1,12 @@
 ---
 name: absorb
-description: What can I learn from this repo? Distills the lessons from a source repo (a local path) that fit the current repo, and names the ones that don't. Use when the user asks what they can learn from another repo.
-argument-hint: "<local-path>"
+description: What can I learn from this repo? Distills the lessons from a source repo (a GitHub URL or a local path) that fit the current repo, and names the ones that don't. Use when the user asks what they can learn from another repo.
+argument-hint: "<github-url|local-path>"
 ---
 
 Transfer what is worth learning from a **source** repo into the **target**, the repo the session stands in. The four phases of absorptive capacity give the order: *acquire* the source, *assimilate* it in its own context, *transform* each finding against the target, *exploit* what the user picks. Every finding is a **lesson**, written as a pattern whose **forces** explain why it works; a lesson transfers only when the target shares its forces. Copying a lesson whose forces the target lacks is **cargo cult**, and the transform phase exists to catch it.
 
-The only file this skill writes in the target is the report. The source is read-only.
+The only file this skill writes in the target is the report. The source is read-only, and the only thing this skill deletes is its own clone of it.
 
 ## 1. Lens
 
@@ -18,11 +18,16 @@ Show the lens to the user in 3–5 lines and ask for corrections.
 
 ## 2. Acquire
 
-Read a local-path source in place. If it is a git repo, record its `HEAD` SHA.
+The source is a GitHub URL or a local path.
 
-Name the source's **slug**: its folder name, lowercased, with every run of non-alphanumeric characters turned into one hyphen. The report lives at `docs/lessons/<slug>.md` in the target.
+- **GitHub URL** (`https://github.com/<owner>/<repo>`): shallow-clone it (`git clone --depth 1`) into a new directory under the OS temp directory, outside the target, and record the clone's exact path. Write every lesson's evidence as a **permalink**, `https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<line>`. When the run ends, at step 6 or at any earlier stop, delete the recorded clone path, and only that path.
+- **Local path**: read it in place.
 
-**Done when** the source is readable, and its slug and SHA (or "not a git repo") are recorded.
+Record the source's full `HEAD` SHA, or "not a git repo".
+
+Name the source's **slug**. A GitHub URL, or a local clone whose `origin` remote is on GitHub (`https://github.com/<owner>/<repo>` or `git@github.com:<owner>/<repo>`, with or without a trailing `.git` or `/`), gives `<owner>-<repo>`. Any other source gives its folder name. Lowercase the slug and turn every run of non-alphanumeric characters into one hyphen. The report lives at `docs/lessons/<slug>.md` in the target.
+
+**Done when** the source is readable, and its slug and SHA (or "not a git repo") are recorded, plus the clone's path for a GitHub URL.
 
 ## 3. Assimilate
 
@@ -52,7 +57,7 @@ Ask the user to adopt or reject each lesson.
 
 Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 
-- **Source**: path, SHA, and the date of the run.
+- **Source**: the GitHub URL or local path, the SHA, and the date of the run.
 - **Lens**: as the user accepted it.
 - **Lessons**: every *match* and *partial* lesson in full format, each with the user's decision.
 - **Doesn't transfer, and why**: every *no* lesson, with the missing force.
