@@ -4,10 +4,14 @@
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-human
+**Status:** resolved
 
-- [ ] `git rev-parse --is-inside-work-tree` succeeds, and the current branch is `main`
-- [ ] The first commit holds every existing file, and `.gitignore` excludes the `skill-creator` eval workspace
-- [ ] Commits carry the author identity the user chose for this public repo
-- [ ] The public GitHub repo exists under the chosen account, and `main` tracks `origin/main`
-- [ ] `/matt-with-paseo` locates stage C on this checkout
+- [x] `git rev-parse --is-inside-work-tree` succeeds, and the current branch is `main`
+- [x] The first commit holds every existing file, and `.gitignore` excludes the `skill-creator` eval workspace
+- [x] Commits carry the author identity the user chose for this public repo
+- [x] The public GitHub repo exists under the chosen account, and `main` tracks `origin/main`
+- [x] `/matt-with-paseo` locates stage C on this checkout
+
+## Comments
+
+- Done on 2026-09-29. `main` tracks `origin/main` at https://github.com/hanh9898/what-can-i-learn-from-this-repo (public). Repo-local author: `hanh9898 <56497031+hanh9898@users.noreply.github.com>`. `.gitignore` excludes `absorb-workspace/`. Stage C holds: tickets exist under `.scratch/absorb/issues/`, and there is no `wave*-common-rules.md`.
