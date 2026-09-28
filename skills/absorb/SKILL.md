@@ -1,7 +1,7 @@
 ---
 name: absorb
-description: Distill lessons from a source repo (GitHub URL or local path) into the current repo, keeping only what fits here. Use when the user asks what they can learn from a repo, or wants to adopt another repo's practices in this one.
-argument-hint: "<github-url | local-path>"
+description: What can I learn from this repo? Distills the lessons from a source repo (a local path) that fit the current repo, and names the ones that don't. Use when the user asks what they can learn from another repo.
+argument-hint: "<local-path>"
 ---
 
 Transfer what is worth learning from a **source** repo into the **target**, the repo the session stands in. The four phases of absorptive capacity give the order: *acquire* the source, *assimilate* it in its own context, *transform* each finding against the target, *exploit* what the user picks. Every finding is a **lesson**, written as a pattern whose **forces** explain why it works; a lesson transfers only when the target shares its forces. Copying a lesson whose forces the target lacks is **cargo cult**, and the transform phase exists to catch it.
