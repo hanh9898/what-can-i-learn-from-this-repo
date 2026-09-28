@@ -12,7 +12,7 @@ The only file this skill writes in the target is the report. The source is read-
 
 Build the target's **lens**: what the target is, its stack and size, the conventions it already holds, and where it hurts. Read its README, agent config (`CLAUDE.md`, `AGENTS.md`), glossary, ADRs, manifest files, directory layout, TODOs and open tickets.
 
-If the target is **thin**, holding no code, manifest or agent config (an empty folder, or only a README), it is too little to infer from. **Interview** the user instead: ask about their goals for the target and their pain points, then build the lens from their answers and whatever the target holds.
+If the target holds no code and none of these files beyond a README (an empty folder, or only a README), it is **thin**: too little to infer from. **Interview** the user about their goals for the target, its planned stack, and where it hurts, then build the lens from their answers and whatever the target holds.
 
 Show the lens to the user in 3–5 lines and ask for corrections.
 
