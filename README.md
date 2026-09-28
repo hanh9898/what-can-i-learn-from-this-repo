@@ -23,7 +23,7 @@ mkdir -p ~/.agents/skills
 cp -r what-can-i-learn-from-this-repo/skills/absorb ~/.agents/skills/
 ```
 
-Codex picks the skill up on its own; restart Codex if it doesn't appear. On Codex, type `$absorb <local-path>` where the next section says `/absorb`, or just ask.
+Codex picks the skill up on its own; restart Codex if it doesn't appear. Where Claude Code takes `/absorb <local-path>`, on Codex mention `$absorb` followed by the local path, or just ask.
 
 ## Use
 
