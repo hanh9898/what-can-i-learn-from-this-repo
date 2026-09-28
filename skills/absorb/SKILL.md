@@ -8,6 +8,12 @@ Transfer what is worth learning from a **source** repo into the **target**, the 
 
 The only file this skill writes in the target is the report. The source is read-only, and the only thing this skill deletes is its own clone of it.
 
+## 0. Prior report
+
+Name the source's slug by the rule in step 2, and look for `docs/lessons/<slug>.md` in the target. If it exists, load its SHA and every lesson in it, each with its name, its label, and, for a *match* or *partial* one, its decision. Carry these names into step 3: a lesson for a practice the report already names takes that name, so the checkpoint can tell it from a new one. The loaded labels record the earlier run, not an answer: step 4 labels every lesson afresh against this run's lens, and a lesson whose new label differs from its loaded one is *changed*.
+
+**Done when** every lesson in the prior report is known by name, label and any decision, or no report exists at that path.
+
 ## 1. Lens
 
 Build the target's **lens**: what the target is, its stack and size, the conventions it already holds, and where it hurts. Read its README, agent config (`CLAUDE.md`, `AGENTS.md`), glossary, ADRs, manifest files, directory layout, TODOs and open tickets.
@@ -58,6 +64,7 @@ Label every lesson *match*, *partial* or *no* against the lens, each with a one-
 Present the **brief**, with these parts in order:
 
 - **Lessons**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
+- **Prior decisions**, when step 0 loaded a report: this run's lessons that the report already names. Each one whose label is unchanged keeps its decision and appears only in a count here. Each one whose label changed, whatever its new label, is listed here instead of under **Lessons**, with its old label and decision, its new label, and the force that changed; the user decides it again.
 - **Not transferred**: the count of *no* lessons.
 - **Coverage**: the coverage note from step 3.
 - **Report**: the path the report will be written to.
@@ -76,5 +83,7 @@ Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 - **Doesn't transfer, and why**: every *no* lesson, with the missing force.
 
 Tell the user the report's path.
+
+When step 0 loaded a report, update that file in place: record this run's SHA and date, and keep every earlier lesson with its decision, including one this run did not find again; a lesson listed under **Prior decisions** as changed keeps its old label and decision beside the new ones.
 
 **Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson.
