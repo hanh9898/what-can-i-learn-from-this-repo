@@ -4,7 +4,7 @@ Each adopted lesson becomes one ticket, written so an implementer can pick it up
 
 ## Where tickets go
 
-- **Tracker**: when the target has `docs/agents/issue-tracker.md`, file each ticket in the tracker it describes, following its conventions for place, naming and fields. Where it groups tickets by feature, the feature is the source slug. Where it records a triage state, use its `needs-triage` role.
+- **Tracker**: when the target has `docs/agents/issue-tracker.md`, file each ticket in the tracker it describes, following its conventions for place, naming and status; the ticket's body takes the fields below. Where it groups tickets by feature, the feature is the source slug. Where the status is a triage state, use its `ready-for-agent` role, since the user adopted the lesson and the ticket is written to be picked up cold.
 - **Local**: otherwise, write each ticket as `.scratch/<slug>/NN-<lesson>.md` in the target, where `<lesson>` is the lesson's name lowercased and hyphenated, and `NN` counts up from `01`, after any ticket already in that folder.
 
 ## Fields

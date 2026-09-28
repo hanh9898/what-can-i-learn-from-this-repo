@@ -43,7 +43,7 @@ Present the **brief**, with these parts in order:
 - **Lessons**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
 - **Not transferred**: the count of *no* lessons.
 - **Report**: the path the report will be written to.
-- **Tickets**: where the adopted lessons will be filed, placed as [`ticket-format.md`](ticket-format.md) says.
+- **Tickets**: where the adopted lessons will be filed: the target's tracker when it documents one, or else the local folder, placed as [`ticket-format.md`](ticket-format.md) says.
 
 Ask the user to adopt or reject each lesson.
 
@@ -59,7 +59,7 @@ Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 - **Doesn't transfer, and why**: every *no* lesson, with the missing force.
 - **Licence**, only when an adopted lesson carries code as [`ticket-format.md`](ticket-format.md) defines it: the source's licence, from its licence file, and the lessons that carry code.
 
-Then file one ticket for each adopted lesson, and none for a rejected one, in the place and format of [`ticket-format.md`](ticket-format.md).
+Then file exactly one ticket per adopted lesson, in the place and format of [`ticket-format.md`](ticket-format.md).
 
 Tell the user the report's path and where each ticket went.
 
