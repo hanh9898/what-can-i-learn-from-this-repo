@@ -1,0 +1,5 @@
+interface:
+  display_name: "Absorb"
+  short_description: "Learn what fits from another repo"
+policy:
+  allow_implicit_invocation: true
