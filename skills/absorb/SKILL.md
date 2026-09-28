@@ -10,9 +10,9 @@ The only file this skill writes in the target is the report. The source is read-
 
 ## 0. Prior report
 
-Name the source's slug by the rule in step 2, and look for `docs/lessons/<slug>.md` in the target. If it exists, load its SHA and every lesson in it, each with its name, label and decision. Carry these names into step 3: a lesson for a practice the report already names takes that name, so the checkpoint can tell it from a new one.
+Name the source's slug by the rule in step 2, and look for `docs/lessons/<slug>.md` in the target. If it exists, load its SHA and every lesson in it, each with its name, its label, and, for a *match* or *partial* one, its decision. Carry these names into step 3: a lesson for a practice the report already names takes that name, so the checkpoint can tell it from a new one.
 
-**Done when** every lesson in the prior report is known by name, label and decision, or no report exists at that path.
+**Done when** every lesson in the prior report is known by name, label and any decision, or no report exists at that path.
 
 ## 1. Lens
 
@@ -66,6 +66,6 @@ Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 
 Tell the user the report's path.
 
-When step 0 loaded a report, update that file in place: replace its SHA and date with this run's, keep every earlier lesson and decision, including the lessons this run did not show or did not find again, and give each lesson whose label changed its new label and decision next to the old ones.
+When step 0 loaded a report, update that file in place: record this run's SHA and date, and keep every earlier lesson with its decision, including one this run did not find again; a lesson listed under **Prior decisions** as changed keeps its old label and decision beside the new ones.
 
 **Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson.
