@@ -1,6 +1,6 @@
 # Dimensions
 
-Each dimension below gets its own sweep; sweeps run one after another go in this order. The lens sets the depth: go deep on a dimension where the target hurts or is changing, and skim the rest for anything the lens did not foresee. Skimming a dimension still produces its lessons, or "nothing worth transferring".
+Each dimension below gets its own sweep. When one agent sweeps them all, it goes in this order. The lens sets the depth: go deep on a dimension where the target hurts or is changing, and skim the rest for anything the lens did not foresee. Skimming a dimension still produces its lessons, or "nothing worth transferring".
 
 1. **Architecture and module boundaries**: how the code is split, what each module hides, where the seams sit, how dependencies point.
 2. **Testing**: what is tested at which seam, how tests stay fast and deterministic, what fixtures and evals look like.

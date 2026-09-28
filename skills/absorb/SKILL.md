@@ -38,8 +38,6 @@ Dispatch one subagent per dimension in [`dimensions.md`](dimensions.md), all at 
 
 Without subagents, sweep the dimensions yourself, one after another in the order `dimensions.md` gives, with the same inputs for each.
 
-A practice that returns from more than one dimension becomes one lesson under one Name, keeping every Evidence.
-
 **Done when** the coverage note is written and every dimension has returned its lessons or "nothing worth transferring".
 
 ## 4. Transform
