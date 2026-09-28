@@ -6,7 +6,7 @@ argument-hint: "<github-url|local-path>"
 
 Transfer what is worth learning from a **source** repo into the **target**, the repo the session stands in. The four phases of absorptive capacity give the order: *acquire* the source, *assimilate* it in its own context, *transform* each finding against the target, *exploit* what the user picks. Every finding is a **lesson**, written as a pattern whose **forces** explain why it works; a lesson transfers only when the target shares its forces. Copying a lesson whose forces the target lacks is **cargo cult**, and the transform phase exists to catch it.
 
-The only file this skill writes in the target is the report. The source is read-only, and the only thing this skill deletes is its own clone of it.
+In the target, this skill writes only the report and the tickets. The source is read-only, and the only thing this skill deletes is its own clone of it.
 
 ## 0. Prior report
 
@@ -68,6 +68,7 @@ Present the **brief**, with these parts in order:
 - **Not transferred**: the count of *no* lessons.
 - **Coverage**: the coverage note from step 3.
 - **Report**: the path the report will be written to.
+- **Tickets**: where the adopted lessons will be filed: the target's tracker when it documents one, or else the local folder, placed as [`ticket-format.md`](ticket-format.md) says.
 
 Ask the user to adopt or reject each lesson.
 
@@ -81,9 +82,12 @@ Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 - **Lens**: as the user accepted it.
 - **Lessons**: every *match* and *partial* lesson in full format, each with the user's decision.
 - **Doesn't transfer, and why**: every *no* lesson, with the missing force.
-
-Tell the user the report's path.
+- **Licence**, only when an adopted lesson carries code as [`ticket-format.md`](ticket-format.md) defines it: the source's licence, from its licence file, and the lessons that carry code.
 
 When step 0 loaded a report, update that file in place: record this run's SHA and date, and keep every earlier lesson with its decision, including one this run did not find again; a lesson listed under **Prior decisions** as changed keeps its old label and decision beside the new ones.
 
-**Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson.
+Then file exactly one ticket per adopted lesson, in the place and format of [`ticket-format.md`](ticket-format.md).
+
+Tell the user the report's path and where each ticket went.
+
+**Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson; and each adopted lesson, and no rejected one, has exactly one ticket linking to the report and the source.
