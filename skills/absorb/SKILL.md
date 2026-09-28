@@ -6,7 +6,7 @@ argument-hint: "<local-path>"
 
 Transfer what is worth learning from a **source** repo into the **target**, the repo the session stands in. The four phases of absorptive capacity give the order: *acquire* the source, *assimilate* it in its own context, *transform* each finding against the target, *exploit* what the user picks. Every finding is a **lesson**, written as a pattern whose **forces** explain why it works; a lesson transfers only when the target shares its forces. Copying a lesson whose forces the target lacks is **cargo cult**, and the transform phase exists to catch it.
 
-The only file this skill writes in the target is the report. The source is read-only.
+In the target, this skill writes only the report and the tickets. The source is read-only.
 
 ## 1. Lens
 
@@ -43,6 +43,7 @@ Present the **brief**, with these parts in order:
 - **Lessons**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
 - **Not transferred**: the count of *no* lessons.
 - **Report**: the path the report will be written to.
+- **Tickets**: where the adopted lessons will be filed, placed as [`ticket-format.md`](ticket-format.md) says.
 
 Ask the user to adopt or reject each lesson.
 
@@ -56,7 +57,10 @@ Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 - **Lens**: as the user accepted it.
 - **Lessons**: every *match* and *partial* lesson in full format, each with the user's decision.
 - **Doesn't transfer, and why**: every *no* lesson, with the missing force.
+- **Licence**, only when an adopted lesson carries code as [`ticket-format.md`](ticket-format.md) defines it: the source's licence, from its licence file, and the lessons that carry code.
 
-Tell the user the report's path.
+Then file one ticket for each adopted lesson, and none for a rejected one, in the place and format of [`ticket-format.md`](ticket-format.md).
 
-**Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson.
+Tell the user the report's path and where each ticket went.
+
+**Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson; and each adopted lesson, and no rejected one, has exactly one ticket linking to the report and the source.
