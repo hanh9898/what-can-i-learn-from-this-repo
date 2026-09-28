@@ -1,0 +1,17 @@
+{
+  "name": "absorb",
+  "owner": {
+    "name": "hanh9898",
+    "url": "https://github.com/hanh9898"
+  },
+  "description": "absorb: distill the lessons worth learning from another repo into the one you're in, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "absorb",
+      "source": "./",
+      "description": "Distill lessons from a source repo into the current repo, judged against the current repo's context so nothing is cargo-culted.",
+      "category": "engineering",
+      "keywords": ["skills", "learning", "codebase", "best-practices"]
+    }
+  ]
+}

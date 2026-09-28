@@ -1,0 +1,14 @@
+{
+  "name": "absorb",
+  "version": "0.1.0",
+  "description": "Distill lessons from a source repo into the current repo, judged against the current repo's context so nothing is cargo-culted.",
+  "author": {
+    "name": "hanh9898",
+    "url": "https://github.com/hanh9898"
+  },
+  "homepage": "https://github.com/hanh9898/what-can-i-learn-from-this-repo",
+  "repository": "https://github.com/hanh9898/what-can-i-learn-from-this-repo",
+  "license": "MIT",
+  "keywords": ["skills", "learning", "codebase", "best-practices"],
+  "skills": ["./skills/absorb"]
+}
