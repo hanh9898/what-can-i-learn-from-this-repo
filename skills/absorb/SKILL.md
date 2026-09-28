@@ -33,9 +33,19 @@ Name the source's **slug**. A GitHub URL, or a local clone whose `origin` remote
 
 ## 3. Assimilate
 
-Sweep the source one dimension at a time, in the order [`dimensions.md`](dimensions.md) gives, going deep where the lens points and skimming elsewhere. Write each finding as a lesson in the format of [`lesson-format.md`](lesson-format.md), with the source's context and forces, before judging it against the target.
+Map the source's top-level layout and the size of each area. If the source is too large to read in full, as a monorepo usually is, pick the areas the lens points at and skip the rest: the choice is yours, and the user sees it in the brief. Write the **coverage note**: every area read, and every area skipped with the reason the lens gives, or "read in full".
 
-**Done when** every dimension has returned its lessons or "nothing worth transferring".
+Dispatch one subagent per dimension in [`dimensions.md`](dimensions.md), all at once. Each subagent gets:
+
+- the lens;
+- the source's path and SHA, and that the source is read-only;
+- its dimension, and whether the lens sends it deep or skims it;
+- the areas to read;
+- the absolute path of [`lesson-format.md`](lesson-format.md), and the task of writing each finding as a lesson in that format, with the source's context and forces, leaving Label, Payoff and Cost to you.
+
+Without subagents, sweep the dimensions yourself, one after another in the order `dimensions.md` gives, with the same inputs for each.
+
+**Done when** the coverage note is written and every dimension has returned its lessons or "nothing worth transferring".
 
 ## 4. Transform
 
@@ -49,6 +59,7 @@ Present the **brief**, with these parts in order:
 
 - **Lessons**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
 - **Not transferred**: the count of *no* lessons.
+- **Coverage**: the coverage note from step 3.
 - **Report**: the path the report will be written to.
 
 Ask the user to adopt or reject each lesson.
