@@ -13,6 +13,18 @@ The method is absorptive capacity (*acquire → assimilate → transform → exp
 /plugin install absorb@absorb
 ```
 
+## Install (Codex)
+
+Copy the skill folder into your Codex skills location, `~/.agents/skills/` for every project or `.agents/skills/` inside one repo:
+
+```
+git clone https://github.com/hanh9898/what-can-i-learn-from-this-repo
+mkdir -p ~/.agents/skills
+cp -r what-can-i-learn-from-this-repo/skills/absorb ~/.agents/skills/
+```
+
+Codex picks the skill up on its own; restart Codex if it doesn't appear. On Codex, type `$absorb <local-path>` where the next section says `/absorb`, or just ask.
+
 ## Use
 
 From inside the project you want to improve:
