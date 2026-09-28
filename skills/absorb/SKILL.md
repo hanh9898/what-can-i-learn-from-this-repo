@@ -20,10 +20,12 @@ Show the lens to the user in 3–5 lines and ask for corrections.
 
 The source is a GitHub URL or a local path.
 
-- **GitHub URL** (`https://github.com/<owner>/<repo>`): shallow-clone it (`git clone --depth 1`) into a new directory under the OS temp directory, outside the target. Record the clone's exact path and its full 40-character `HEAD` SHA. Write every lesson's evidence as a **permalink**, `https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<line>`. When the run ends, at step 6 or at any earlier stop, delete the recorded clone path, and only that path.
-- **Local path**: read it in place. If it is a git repo, record its `HEAD` SHA.
+- **GitHub URL** (`https://github.com/<owner>/<repo>`): shallow-clone it (`git clone --depth 1`) into a new directory under the OS temp directory, outside the target, and record the clone's exact path. Write every lesson's evidence as a **permalink**, `https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<line>`. When the run ends, at step 6 or at any earlier stop, delete the recorded clone path, and only that path.
+- **Local path**: read it in place.
 
-Name the source's **slug**. For a GitHub repo, meaning a GitHub URL or a local clone whose `origin` remote is `https://github.com/<owner>/<repo>` or `git@github.com:<owner>/<repo>`, take `<owner>-<repo>` after dropping any trailing `/` or `.git`. For any other source, take its folder name. Lowercase the slug and turn every run of non-alphanumeric characters into one hyphen. The report lives at `docs/lessons/<slug>.md` in the target.
+Record the source's full `HEAD` SHA, or "not a git repo".
+
+Name the source's **slug**. A GitHub URL, or a local clone whose `origin` remote is on GitHub (`https://github.com/<owner>/<repo>` or `git@github.com:<owner>/<repo>`, with or without a trailing `.git` or `/`), gives `<owner>-<repo>`. Any other source gives its folder name. Lowercase the slug and turn every run of non-alphanumeric characters into one hyphen. The report lives at `docs/lessons/<slug>.md` in the target.
 
 **Done when** the source is readable, and its slug and SHA (or "not a git repo") are recorded, plus the clone's path for a GitHub URL.
 
@@ -44,7 +46,6 @@ Label every lesson *match*, *partial* or *no* against the lens, each with a one-
 Present the **brief**, with these parts in order:
 
 - **Lessons**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
-- **Permalinks**: for a GitHub URL source, each lesson's evidence is its permalink, never a bare `path:line`.
 - **Not transferred**: the count of *no* lessons.
 - **Report**: the path the report will be written to.
 
@@ -56,7 +57,7 @@ Ask the user to adopt or reject each lesson.
 
 Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 
-- **Source**: the GitHub URL or local path, the full SHA, and the date of the run.
+- **Source**: the GitHub URL or local path, the SHA, and the date of the run.
 - **Lens**: as the user accepted it.
 - **Lessons**: every *match* and *partial* lesson in full format, each with the user's decision.
 - **Doesn't transfer, and why**: every *no* lesson, with the missing force.
