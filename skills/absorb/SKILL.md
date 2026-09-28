@@ -38,7 +38,13 @@ Label every lesson *match*, *partial* or *no* against the lens, each with a one-
 
 ## 5. Checkpoint
 
-Present the **brief**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence. Close with the count of *no* lessons and where the report will go. Ask the user to adopt or reject each lesson.
+Present the **brief**, with these parts in order:
+
+- **Lessons**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
+- **Not transferred**: the count of *no* lessons.
+- **Report**: the path the report will be written to.
+
+Ask the user to adopt or reject each lesson.
 
 **Done when** the user has decided on every lesson in the brief.
 
