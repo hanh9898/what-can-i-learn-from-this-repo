@@ -14,7 +14,7 @@ Title the ticket with the lesson's name, then give it these parts:
 - **Work**: what to change in the target: the lesson's solution applied to the target, including the change a *partial* lesson needs. Describe it as a practice, quoting source code only as [`lesson-format.md`](lesson-format.md) allows for a solution.
 - **Forces**: the forces the target shares with the source, which say why the work pays off.
 - **Acceptance criteria**: a checkbox list, each item a pass/fail check someone can run against the target.
-- **Report**: a link to `docs/lessons/<slug>.md`, naming the lesson there. From a file ticket, the link is relative to the ticket's own folder.
+- **Report**: a markdown link to `docs/lessons/<slug>.md`, naming the lesson there. From a file ticket, the link's target is relative to the ticket's own folder.
 - **Source**: the lesson's evidence, pinned to the SHA recorded in step 2 when there is one.
 
 ## Carried code
