@@ -52,7 +52,9 @@
     - The ticket had no status, ticks or comments yet. Fixed by this update.
     - `$absorb <local-path>` read like documented argument parsing, but Codex documents only the `$skill` mention. Fixed: the README now says to mention `$absorb` followed by the local path. The human run below checks that this works.
 - **Open, for a human (criterion 3)**: this machine has no Codex CLI, and Paseo reports the Codex provider unavailable. On a machine with Codex:
-  1. Install as the README says: clone this repo at this branch or at `main` after merge, then `mkdir -p ~/.agents/skills` and `cp -r what-can-i-learn-from-this-repo/skills/absorb ~/.agents/skills/`.
+  1. Install the skill. This branch is never pushed, so choose the case that applies:
+     - **After merge and a push to `main`**: run the README's `## Install (Codex)` commands as written.
+     - **Before that**: take a local checkout of the merged `main`, such as the integration checkout `D:\what-can-i-learn-from-this-repo`. Run `mkdir -p ~/.agents/skills`, then `cp -r <checkout>/skills/absorb ~/.agents/skills/`.
   2. Make a throwaway target: `mkdir /tmp/absorb-target && cd /tmp/absorb-target && git init && echo "# demo" > README.md && git add . && git commit -m init`.
   3. Clone a source: `git clone https://github.com/mattpocock/skills /tmp/mp-skills`.
   4. Start `codex` in `/tmp/absorb-target` and ask `what can I learn from /tmp/mp-skills?`. Do not use `$absorb`: this run tests implicit firing.
