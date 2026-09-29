@@ -2,9 +2,7 @@
 # Measure absorb's description against its trigger eval with skill-creator.
 # Usage: evals/absorb/trigger/run.sh <results-dir> [loop]
 #   default: run_eval, 3 runs per query, writes <results-dir>/results.json
-#   loop:    run_loop, the 5-iteration description optimiser. On this Windows machine its runs
-#            were killed about 4 s in, before the model replied, so every query read as "not
-#            triggered"; trust run_eval's numbers over the loop's.
+#   loop:    run_loop, the description optimiser (up to 5 iterations, 40% held out)
 # Queries run from a throwaway project (a copy of the behaviour-eval fixture), so "this repo"
 # means an ordinary skill repo, not the absorb project itself.
 set -euo pipefail
@@ -29,6 +27,8 @@ cd "$project"
 common=(--eval-set "$here/trigger-eval.json" --skill-path "$repo/skills/absorb" --model "$model"
         --num-workers 1 --timeout 120 --runs-per-query 3)
 export PYTHONPATH="$here:$skill_creator" PYTHONUTF8=1
+# Every claude -p inherits this stdin. Left open, each run waits 3 s for piped input first.
+exec < /dev/null
 if [ "$mode" = loop ]; then
   python -m scripts.run_loop "${common[@]}" --max-iterations 5 --report none --results-dir "$results" --verbose
 else

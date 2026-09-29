@@ -4,10 +4,10 @@
 
 **Blocked by:** 08
 
-**Status:** ready-for-human
+**Status:** resolved
 
 - [x] The user reviewed the query set before it ran.
-- [ ] The description loop ran on the model powering the session, and its report is recorded in this ticket's comments.
+- [x] The description loop ran on the model powering the session, and its report is recorded in this ticket's comments.
 - [x] The chosen description triggers on every should-trigger query and on no near-miss in the held-out set. Any misses are recorded with a reason.
 - [x] The new description still passes the pointer rules in `CODING_STANDARDS.md`.
 
@@ -54,3 +54,13 @@
     - Criterion 2 is correctly left open. No change.
     - Criterion 3 cites a full-set `run_eval` rather than the loop's held-out split. Noted: the full-set measurement covers the held-out queries too, and every one of the 10 queries passed 3/3.
     - Criterion 4's "advertises only existing behaviour" check comes from ticket 01's review, not from a named pointer rule. Noted, and the other three bullets are the pointer rules.
+- **Loop debugged (user's call, 2026-09-29)**: the cause was stdin. Captured stderr showed every `claude -p` printing "no stdin data received in 3s, proceeding without it". It waited 3 s on the stdin it inherited, and inside the loop that was an open pipe, so each run died about 4 s in. `run.sh` now runs `exec < /dev/null` before starting Python.
+  - Checks after the fix:
+    - A one-iteration loop on 2 queries: 2/2.
+    - `run.sh` in measure mode: 30/30 in 4 min 53 s.
+  - This supersedes the "not found why" note above.
+- **Loop report** (`run.sh <dir> loop`, `claude-sonnet-5`, 3 runs per query, 40% held out, 6 train and 4 test):
+  - Iteration 1: train 18/18 and test 12/12, precision and recall 100%.
+  - Exit reason `all_passed (iteration 1)`; best score 4/4 held out.
+  - The best description is the original, unchanged. The held-out queries were shadcn-ui (3/3), the Vietnamese mattpocock query (3/3), zod vs valibot (0/3) and review my PR (0/3).
+  - Criterion 2 is ticked with one recorded deviation: the loop ran on Sonnet 5, by the user's choice, not on the session's Opus 5.5, which the `reasoning_extraction` safeguard refused in headless runs.
