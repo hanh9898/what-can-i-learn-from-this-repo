@@ -97,12 +97,12 @@
 
 | Ticket | Agent id | Workspace id | Branch | Base commit | Private resources | Cleaned |
 |---|---|---|---|---|---|---|
-| 02 | f83f7151-5d9c-4b1b-ab9f-9bf59663ef29 | wks_0b767950a8f023bf | wave1/02-github-url-source | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-02 | [ ] |
-| 03 | 4ffda535-26f4-4d62-979d-f052fe062dec | wks_c1c6b5f2a31f12cc | wave1/03-exploit-to-tickets | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-03 | [ ] |
-| 04 | b4cd01e4-6dae-4c6a-a3d9-498817a7220d | wks_b1e4a555810d1f2d | wave1/04-subagent-per-dimension | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-04 | [ ] |
-| 05 | 687c7f67-4ef7-430f-8213-d74258c3822c | wks_2525238762124371 | wave1/05-rerun-keeps-decisions | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-05 | [ ] |
-| 06 | 4a25ce50-8845-47c6-9910-3620a981279e | wks_9790916ecdc8d389 | wave1/06-empty-target-interview | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-06 | [ ] |
-| 07 | e0ca5fd9-ef07-424d-bc39-043dacfeb290 | wks_0ce7c3d8c496f462 | wave1/07-codex-support | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-07 | [ ] |
+| 02 | f83f7151-5d9c-4b1b-ab9f-9bf59663ef29 | wks_0b767950a8f023bf | wave1/02-github-url-source | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-02 | [x] |
+| 03 | 4ffda535-26f4-4d62-979d-f052fe062dec | wks_c1c6b5f2a31f12cc | wave1/03-exploit-to-tickets | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-03 | [x] |
+| 04 | b4cd01e4-6dae-4c6a-a3d9-498817a7220d | wks_b1e4a555810d1f2d | wave1/04-subagent-per-dimension | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-04 | [x] |
+| 05 | 687c7f67-4ef7-430f-8213-d74258c3822c | wks_2525238762124371 | wave1/05-rerun-keeps-decisions | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-05 | [x] |
+| 06 | 4a25ce50-8845-47c6-9910-3620a981279e | wks_9790916ecdc8d389 | wave1/06-empty-target-interview | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-06 | [x] |
+| 07 | e0ca5fd9-ef07-424d-bc39-043dacfeb290 | wks_0ce7c3d8c496f462 | wave1/07-codex-support | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-07 | [x] |
 
 ## Review
 
