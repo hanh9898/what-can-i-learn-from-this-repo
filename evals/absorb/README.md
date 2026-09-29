@@ -16,3 +16,7 @@ From the repo root, with `W=evals/absorb-workspace/iteration-<N>/eval-0-mattpoco
 5. From `skill-creator`'s folder, run `python -m scripts.aggregate_benchmark <abs path to iteration-N> --skill-name absorb`. Then run `PYTHONUTF8=1 python eval-viewer/generate_review.py <iteration-N> --skill-name absorb --benchmark <iteration-N>/benchmark.json --static <iteration-N>/review.html`. On Windows, `PYTHONUTF8=1` is needed because outputs may be in Vietnamese.
 
 `run.sh` puts the target outside this repo, so a run cannot read this repo's `CLAUDE.md` or tickets. The skill always clones the source's current `HEAD`. `evals.json` records the SHA the planted answers were designed against; if the source drifts far from it, recheck the planted answers.
+
+## Trigger eval
+
+`trigger/trigger-eval.json` holds 10 queries: 5 that must fire the skill, and 5 near-misses that must not. The near-misses are a repo summary, onboarding, a PR review, a library comparison, and API research. `trigger/run.sh <results-dir>` measures the current description with `skill-creator`'s `run_eval`, running each query 3 times on `claude-sonnet-5`. `trigger/run.sh <results-dir> loop` runs the description optimiser instead, but the notes at the top of `run.sh` explain why its numbers are not trusted here. `trigger/sitecustomize.py` makes `skill-creator`'s pipe reading work on Windows.

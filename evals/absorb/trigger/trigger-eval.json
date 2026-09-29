@@ -1,0 +1,12 @@
+[
+  {"query": "what can I learn from https://github.com/vercel/next.js for this project?", "should_trigger": true},
+  {"query": "Có gì trong repo github.com/mattpocock/skills đáng để mình áp dụng vào dự án này không?", "should_trigger": true},
+  {"query": "I cloned ../fastapi-template locally — which of its practices should we adopt here, and which would be cargo cult for us?", "should_trigger": true},
+  {"query": "look at how shadcn-ui/ui structures its repo and tell me what's worth borrowing for ours", "should_trigger": true},
+  {"query": "Compare our testing and CI setup against https://github.com/astral-sh/ruff and suggest what we should take from it", "should_trigger": true},
+  {"query": "summarise what https://github.com/mattpocock/skills does", "should_trigger": false},
+  {"query": "onboard me into this repo — how is it structured and where do I start?", "should_trigger": false},
+  {"query": "review my PR #42 for bugs", "should_trigger": false},
+  {"query": "compare zod and valibot for our form validation", "should_trigger": false},
+  {"query": "research the GitHub REST API rate limits and write down what matters for us", "should_trigger": false}
+]
