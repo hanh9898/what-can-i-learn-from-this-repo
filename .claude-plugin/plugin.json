@@ -1,6 +1,6 @@
 {
   "name": "absorb",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Distill lessons from a source repo into the current repo, judged against the current repo's context so nothing is cargo-culted.",
   "author": {
     "name": "hanh9898",
