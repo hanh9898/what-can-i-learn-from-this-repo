@@ -45,3 +45,12 @@
 - **Open, for the user**: criterion 2 is not met. The loop's report is recorded above, but it ran on Sonnet 5, and its measurement is invalid on this machine. The user decides between two options:
   - accept the direct `run_eval` measurement as the evidence and close the ticket;
   - debug the loop further, or run it on another machine.
+- **Code review** (fixed point `c65e38e`):
+  - Standards: 3 findings.
+    - The Windows shim replaced `select()` for every caller and always claimed readiness, so a truly silent child could block forever. Fixed: the shim now polls `PeekNamedPipe` until data arrives, the pipe closes, or the timeout passes, and it hands sockets to the real `select()`. A unit check confirmed the timeout, data and EOF paths. A 2-query `run_eval` run gave 2/2 triggers and 0/2 for the near-miss.
+    - Through `PYTHONPATH`, the shim reaches every Python process the eval starts. Fixed by the same change: an inheriting process now only ever gets correct `select()` behaviour.
+    - A `.pyc` file was committed. Fixed: removed, and `__pycache__/` is now in `.gitignore`.
+  - Spec: 3 findings.
+    - Criterion 2 is correctly left open. No change.
+    - Criterion 3 cites a full-set `run_eval` rather than the loop's held-out split. Noted: the full-set measurement covers the held-out queries too, and every one of the 10 queries passed 3/3.
+    - Criterion 4's "advertises only existing behaviour" check comes from ticket 01's review, not from a named pointer rule. Noted, and the other three bullets are the pointer rules.
