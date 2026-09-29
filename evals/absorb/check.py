@@ -1,4 +1,4 @@
-"""Mechanical assertions [m1]-[m7] of eval 0, checked against one run's outputs.
+"""Mechanical assertions [m1]-[m8] of eval 0, checked against one run's outputs.
 
 Usage: python evals/absorb/check.py <run-dir>
 Writes <run-dir>/mechanical.json as a list of {text, passed, evidence}, the field names
@@ -100,6 +100,10 @@ for ticket in tickets:
         if found and not negation.search(line):
             hits.append(f"{ticket.name}: {found.group(0)}")
 check("[m7]", tickets and not hits, f"{len(tickets)} tickets; tooling introduced: {hits or 'none'}")
+
+# m8: the target's README, which records where it hurts, was left as the fixture wrote it.
+readme_changes = [line for line in status if re.match(r'^.. "?README\.md"?$', line)]
+check("[m8]", not readme_changes, f"README.md changes: {readme_changes or 'none'}")
 
 (run_dir / "mechanical.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
 for r in results:

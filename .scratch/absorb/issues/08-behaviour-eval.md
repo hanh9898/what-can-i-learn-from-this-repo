@@ -11,7 +11,7 @@
 
 **Blocked by:** 02, 03
 
-**Status:** ready-for-human
+**Status:** resolved
 
 - [x] Mechanical assertions pass, checked by script:
   - The report exists with the SHA.
@@ -22,7 +22,7 @@
   - There are no long source-code copies.
 - [x] Planted assertions pass: the gap appears as a *match* lesson and gets a ticket, and the trap appears under "doesn't transfer".
 - [x] The with-skill run passes every assertion, and the baseline fails at least the planted ones.
-- [ ] The user reviewed the eval viewer output, and their feedback is recorded in this ticket's comments.
+- [x] The user reviewed the eval viewer output, and their feedback is recorded in this ticket's comments.
 
 ## Comments
 
@@ -68,4 +68,4 @@
     - `benchmark.md` was mojibake. Fixed by regenerating with `PYTHONUTF8=1`. Its `runs_per_configuration: 3` is `skill-creator`'s default label, not our data: there is one run per configuration.
   - The rewritten `run.sh` passed `bash -n`. The two recorded runs came from the version before the review, so the new `run.sh` has not been executed end to end yet.
 - **Grader's eval feedback**: the baseline also rewrote the fixture README's "Where it hurts" section, which erases the problem it just fixed. No assertion checks this. It is a candidate for iteration 2.
-- **Open (criterion 4, for the user)**: review `evals/absorb-workspace/iteration-1/review.html` (git-ignored, local only) and record the feedback here.
+- **User review (2026-09-29, criterion 4)**: the user reviewed `evals/absorb-workspace/iteration-1/review.html` and judged the eval a pass. They asked to add the grader's README assertion. Added as [m8]: the target's README, including its "Where it hurts" section, is unchanged. Grading the recorded runs again with it gives 11/11 for with_skill and 2/11 for without_skill (it rewrote the README). The new `run.sh` will exercise it on the next live run.
