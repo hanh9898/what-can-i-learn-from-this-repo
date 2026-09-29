@@ -50,21 +50,22 @@ check("[m1]", reports and head and head in report,
       f"{'found' if head and head in report else 'not found'} in it")
 
 # m2: every lesson in the Lessons section states its forces and its label.
+# Field names follow lesson-format.md; the label is matched by its value, since prose may be in any language.
 lessons = [b for b in re.split(r"^#{3,4}\s", section(report, "Lessons"), flags=re.M)[1:] if b.strip()]
 missing = [b.splitlines()[0][:60] for b in lessons
-           if not re.search(r"forces", b, re.I) or not re.search(r"label", b, re.I)]
+           if not re.search(r"forces", b, re.I) or not re.search(r"\blabel\b[^\n]*\b(?:match|partial)\b|\*(?:match|partial)\*", b, re.I)]
 check("[m2]", lessons and not missing,
       f"{len(lessons)} lessons; missing forces or label: {missing or 'none'}")
 
 # m3: no lesson from "Doesn't transfer" appears in the brief's Lessons part.
-dont = section(report, "Doesn't transfer") or section(report, "Doesn’t transfer")
-no_names = [n.strip() for n in re.findall(r"^\s*[-*]\s+\*\*(.+?)\*\*", dont, re.M)]
-no_names += [n.strip() for n in re.findall(r"^#{3,4}\s+(?:\d+\.\s*)?(.+)$", dont, re.M)]
+not_transferred = section(report, "Doesn't transfer") or section(report, "Doesn’t transfer")
+no_names = [n.strip() for n in re.findall(r"^\s*[-*]\s+\*\*(.+?)\*\*", not_transferred, re.M)]
+no_names += [n.strip() for n in re.findall(r"^#{3,4}\s+(?:\d+\.\s*)?(.+)$", not_transferred, re.M)]
 brief = ""
 for block in re.split(r"^## Pause", transcript, flags=re.M)[1:]:
     # The brief is the pause that shows labelled lessons. Its parts are bold labels alone at the
     # start of a line, in the user's language; the first part is Lessons.
-    if re.search(r"\*(?:match|partial)\*", block):
+    if re.search(r"\*(?:match|partial)\*", block, re.I):
         parts = re.split(r"^\*\*(?:[^*\n]|\*(?!\*))+\*\*[^\n]*$", block, flags=re.M)
         brief = parts[1] if len(parts) > 1 else block
 leaked = [n for n in no_names if n and n.lower() in brief.lower()]
@@ -72,8 +73,8 @@ check("[m3]", brief and no_names and not leaked,
       f"brief found: {bool(brief)}; {len(no_names)} 'doesn't transfer' lessons; in the brief's Lessons part: {leaked or 'none'}")
 
 # m4: only the report and tickets were written.
-status = [l for l in read(out / "git-status.txt").splitlines() if l.strip()]
-stray = [l for l in status if not re.match(r"^.. (docs/lessons/|\.scratch/)", l)]
+status = [line for line in read(out / "git-status.txt").splitlines() if line.strip()]
+stray = [line for line in status if not re.match(r'^.. "?(docs/lessons/|\.scratch/)', line)]
 check("[m4]", status and not stray, f"{len(status)} changed paths; outside docs/lessons/ and .scratch/: {stray or 'none'}")
 
 # m5: no clone remains in the temp directory.
@@ -88,10 +89,17 @@ for f in reports + tickets:
             long_blocks.append(f"{f.name}: {block.count(chr(10))} lines")
 check("[m6]", not long_blocks, f"fenced blocks over 10 lines: {long_blocks or 'none'}")
 
-# m7: no ticket brings in the source's JS release tooling.
-tooling = re.compile(r"\b(?:add|create|introduce|install|set up|adopt)\b[^.\n]{0,60}(?:package\.json|typescript|\bnpm\b|changeset)", re.I)
-hits = [f"{t.name}: {tooling.search(read(t)).group(0)}" for t in tickets if tooling.search(read(t))]
-check("[m7]", not hits, f"{len(tickets)} tickets; tooling mentions: {hits or 'none'}")
+# m7: tickets exist, and none brings in the source's JS release tooling. A line that negates
+# ("do not add npm", "không thêm npm") rejects the tooling rather than introducing it.
+tooling = re.compile(r"\b(?:add|create|introduce|install|set up|adopt|thêm|tạo|cài)\b[^.\n]{0,60}(?:package\.json|typescript|\bnpm\b|changeset)", re.I)
+negation = re.compile(r"\b(?:not|no|never|without|don't|không|đừng)\b", re.I)
+hits = []
+for ticket in tickets:
+    for line in read(ticket).splitlines():
+        found = tooling.search(line)
+        if found and not negation.search(line):
+            hits.append(f"{ticket.name}: {found.group(0)}")
+check("[m7]", tickets and not hits, f"{len(tickets)} tickets; tooling introduced: {hits or 'none'}")
 
 (run_dir / "mechanical.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
 for r in results:

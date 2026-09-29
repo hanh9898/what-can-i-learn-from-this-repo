@@ -10,8 +10,9 @@ run_dir = Path(sys.argv[1])
 expectations = []
 for name in ("mechanical.json", "planted.json"):
     path = run_dir / name
-    if path.exists():
-        expectations += json.loads(path.read_text(encoding="utf-8"))
+    if not path.exists():
+        sys.exit(f"{path} is missing: run check.py and the grader before merging")
+    expectations += json.loads(path.read_text(encoding="utf-8"))
 passed = sum(e["passed"] for e in expectations)
 timing = json.loads((run_dir / "timing.json").read_text(encoding="utf-8")) if (run_dir / "timing.json").exists() else {}
 grading = {
