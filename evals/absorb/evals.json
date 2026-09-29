@@ -1,0 +1,28 @@
+{
+  "skill_name": "absorb",
+  "source": {
+    "url": "https://github.com/mattpocock/skills",
+    "designed_against_sha": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7"
+  },
+  "evals": [
+    {
+      "id": 0,
+      "name": "mattpocock-skills-into-skill-repo",
+      "prompt": "What can I learn from https://github.com/mattpocock/skills for this repo?\n\nThere is no live user in this session. Whenever you would ask me something or show me something and wait, append exactly what you would show to ../transcript.md under a heading \"## Pause <k>: <what it is>\", then carry on with these answers:\n- If you show me how you understood this repo, or ask about my goals: \"That's right, carry on.\"\n- If you ask which lessons or suggestions to take: \"Adopt every one you rated as a full match for this repo; reject everything else.\"\nWrite any doubt about what to do to ../ambiguities.md. Treat ../tmp as the OS temp directory.",
+      "expected_output": "A report of lessons from mattpocock/skills in docs/lessons/, judged against this repo, with one ticket per adopted lesson. The planted gap (the release checklist should be user-invoked, and its reference should move to disclosed files) is adopted as a match and ticketed. The source's TypeScript/npm/changesets tooling is not adopted.",
+      "files": ["evals/absorb/fixtures/skill-repo"],
+      "expectations": [
+        "[m1] A report exists under docs/lessons/ and records the source's 40-character HEAD SHA.",
+        "[m2] Every lesson in the report's Lessons section states its forces and its label.",
+        "[m3] No lesson listed under 'Doesn't transfer' appears in the Lessons part of the brief the user was shown.",
+        "[m4] The run wrote only the report under docs/lessons/ and tickets under .scratch/ in the target.",
+        "[m5] No clone of the source remains in the temp directory.",
+        "[m6] No written file contains a fenced code block longer than 10 lines.",
+        "[m7] No ticket introduces package.json, TypeScript, npm, or changesets into the target.",
+        "[p1] A lesson about making the release checklist user-invoked only (disable-model-invocation) is labelled match and has a ticket.",
+        "[p2] A lesson about moving the release checklist's long reference (rules table, glossary) out of SKILL.md into disclosed files is labelled match and has a ticket.",
+        "[p3] The report's 'Doesn't transfer' section names the source's TypeScript/npm/changesets release tooling."
+      ]
+    }
+  ]
+}
