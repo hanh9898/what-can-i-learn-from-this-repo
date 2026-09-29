@@ -4,7 +4,7 @@
 
 **Blocked by:** 08
 
-**Status:** resolved
+**Status:** ready-for-human
 
 - [x] The user reviewed the query set before it ran.
 - [ ] The description loop ran on the model powering the session, and its report is recorded in this ticket's comments.
@@ -42,3 +42,6 @@
   - It names one trigger branch.
   - It does not restate the body.
   - It advertises only behaviour that exists: GitHub URL or local path.
+- **Open, for the user**: criterion 2 is not met. The loop's report is recorded above, but it ran on Sonnet 5, and its measurement is invalid on this machine. The user decides between two options:
+  - accept the direct `run_eval` measurement as the evidence and close the ticket;
+  - debug the loop further, or run it on another machine.
