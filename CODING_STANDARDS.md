@@ -27,7 +27,7 @@ A pointer is any always-loaded reference to out-of-context material: a skill `de
 - **Steps on top**: the ordered steps read without wading through reference that could be disclosed. → push that reference down behind a pointer.
 - **Co-location**: a concept's definition, rules, and caveats sit under one heading. → gather the fragments there.
 - **Sprawl**: a document long enough that attention thins, even with every line live. → disclose reference, or split by branch or sequence.
-- **Reachable files** (**hard**): every file in the skill folder is linked from `SKILL.md` or from a file it links. → add the pointer, or delete the orphan.
+- **Reachable files** (**hard**): every file in the skill folder that an agent reads is linked from `SKILL.md` or from a file it links. Harness metadata the harness reads itself, such as `agents/openai.yaml`, needs no link. → add the pointer, or delete the orphan.
 
 ## Steps
 

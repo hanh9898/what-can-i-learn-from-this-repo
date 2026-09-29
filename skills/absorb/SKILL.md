@@ -47,6 +47,7 @@ Dispatch one subagent per dimension in [`dimensions.md`](dimensions.md), all at 
 - the source's path and SHA, and that the source is read-only;
 - its dimension, and whether the lens sends it deep or skims it;
 - the areas to read;
+- the lesson names step 0 loaded, which a lesson for the same practice reuses;
 - the absolute path of [`lesson-format.md`](lesson-format.md), and the task of writing each finding as a lesson in that format, with the source's context and forces, leaving Label, Payoff and Cost to you.
 
 Without subagents, sweep the dimensions yourself, one after another in the order `dimensions.md` gives, with the same inputs for each.
@@ -63,7 +64,7 @@ Label every lesson *match*, *partial* or *no* against the lens, each with a one-
 
 Present the **brief**, with these parts in order:
 
-- **Lessons**: the *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
+- **Lessons**: the new *match* and *partial* lessons only, ranked as [`lesson-format.md`](lesson-format.md) says, each as name, forces, label with reason, payoff, cost, and evidence.
 - **Prior decisions**, when step 0 loaded a report: this run's lessons that the report already names. Each one whose label is unchanged keeps its decision and appears only in a count here. Each one whose label changed, whatever its new label, is listed here instead of under **Lessons**, with its old label and decision, its new label, and the force that changed; the user decides it again.
 - **Not transferred**: the count of *no* lessons.
 - **Coverage**: the coverage note from step 3.
@@ -82,12 +83,13 @@ Write the report to `docs/lessons/<slug>.md`, with these sections in order:
 - **Lens**: as the user accepted it.
 - **Lessons**: every *match* and *partial* lesson in full format, each with the user's decision.
 - **Doesn't transfer, and why**: every *no* lesson, with the missing force.
+- **Coverage**: the coverage note from step 3.
 - **Licence**, only when an adopted lesson carries code as [`ticket-format.md`](ticket-format.md) defines it: the source's licence, from its licence file, and the lessons that carry code.
 
 When step 0 loaded a report, update that file in place: record this run's SHA and date, and keep every earlier lesson with its decision, including one this run did not find again; a lesson listed under **Prior decisions** as changed keeps its old label and decision beside the new ones.
 
-Then file exactly one ticket per adopted lesson, in the place and format of [`ticket-format.md`](ticket-format.md).
+Then file exactly one ticket per lesson adopted in this run, in the place and format of [`ticket-format.md`](ticket-format.md). A lesson whose earlier decision stands already has its ticket.
 
 Tell the user the report's path and where each ticket went.
 
-**Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson; and each adopted lesson, and no rejected one, has exactly one ticket linking to the report and the source.
+**Done when** the report exists, records a decision for every lesson in the brief, and lists every *no* lesson; and each adopted lesson, and no rejected one, has exactly one ticket linking to the report and the source; and, when step 0 loaded a report, every earlier lesson and decision is still in it.

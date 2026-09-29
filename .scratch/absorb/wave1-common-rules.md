@@ -92,3 +92,38 @@
   - how you verified, with evidence
   - work not done or still in doubt
   - decisions the user must make
+
+## Wave agents
+
+| Ticket | Agent id | Workspace id | Branch | Base commit | Private resources | Cleaned |
+|---|---|---|---|---|---|---|
+| 02 | f83f7151-5d9c-4b1b-ab9f-9bf59663ef29 | wks_0b767950a8f023bf | wave1/02-github-url-source | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-02 | [ ] |
+| 03 | 4ffda535-26f4-4d62-979d-f052fe062dec | wks_c1c6b5f2a31f12cc | wave1/03-exploit-to-tickets | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-03 | [ ] |
+| 04 | b4cd01e4-6dae-4c6a-a3d9-498817a7220d | wks_b1e4a555810d1f2d | wave1/04-subagent-per-dimension | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-04 | [ ] |
+| 05 | 687c7f67-4ef7-430f-8213-d74258c3822c | wks_2525238762124371 | wave1/05-rerun-keeps-decisions | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-05 | [ ] |
+| 06 | 4a25ce50-8845-47c6-9910-3620a981279e | wks_9790916ecdc8d389 | wave1/06-empty-target-interview | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-06 | [ ] |
+| 07 | e0ca5fd9-ef07-424d-bc39-043dacfeb290 | wks_0ce7c3d8c496f462 | wave1/07-codex-support | a706093 | C:\Users\HBLAB_~1\AppData\Local\Temp\absorb-wave1-07 | [ ] |
+
+## Review
+
+- **Fixed point**: `a706093` (the wave's base commit). Seam-only review, because each ticket was reviewed by its own agent. No review profile exists, so it ran in the orchestrator session.
+- **Standards: 8 findings.**
+  1. `lesson-format.md` Evidence said `path:line` while step 2 requires permalinks for GitHub sources. Fixed.
+  2. The report lacked the coverage note (hard, completion criterion). Fixed: step 6 has a **Coverage** section.
+  3. Step 3's subagents did not get step 0's prior lesson names. Fixed: added to their inputs.
+  4. Step 6's **Done when** did not check carried-forward lessons (hard). Fixed.
+  5. The brief's **Lessons** bullet did not say changed lessons are excluded. Fixed: "the new *match* and *partial* lessons only".
+  6. A re-run could file duplicate tickets (hard). Fixed per the user's decision: only lessons adopted in this run get tickets.
+  7. `agents/openai.yaml` was unlinked (hard, Reachable files). Fixed per the user's decision: `CODING_STANDARDS.md` exempts harness metadata.
+  8. README still said the skill writes only the report. Fixed. README also mentions the thin-target interview.
+- **Spec: 4 findings**, all the same seams as Standards 2, 6, 3 and 1, and fixed with them. The reviewer found no conflict between the thin-target interview and a re-run, nor between a GitHub clone and the prior report.
+- **Verification**: two headless `claude -p` runs in a row, on `claude-sonnet-5`, effort medium. The first attempt on `claude-opus-5-5` was refused by an API safeguard (`reasoning_extraction`) before doing anything; the user switched the model. The runs used the merged skill via `--plugin-dir`. The source was `https://github.com/mattpocock/skills` and the target a fresh git copy of this repo.
+  - **Run 1**: stopped at Lens and Checkpoint. The report has Source (URL, SHA `c55ee46`), Lens, Lessons, "Doesn't transfer, and why" and Coverage, with 16 permalinks all at that SHA. There are exactly 2 tickets for the 2 adopted lessons, in `.scratch/mattpocock-skills/issues/`. The clone was deleted. `git status` listed only the report and the two tickets.
+  - **Run 2 (re-run)**: loaded the prior report and stopped at Lens and Checkpoint. No new tickets were filed. The report was updated in place, and every prior decision stood. `git status` listed only ` M docs/lessons/mattpocock-skills.md`. The clone was deleted.
+  - **Observation**, not a failure: with source SHA and target unchanged, run 2 reused the prior lessons instead of re-sweeping, and logged this as an ambiguity. Ticket 08's eval may want to state whether that shortcut is allowed.
+- **Decisions recorded**: in the comments of tickets 07 (the standards exemption) and 03 (re-run tickets).
+- **Traps for the next wave**:
+  - Agents in `bypassPermissions` still asked permission for `rm -rf` and `mv` in their own temp directories, and each one needed an orchestrator approval. They are safe to approve when the path is the agent's own temp dir.
+  - Agents ended turns while review sub-agents were still running, then continued in autonomous turns that send no notification. Heartbeats caught every one.
+  - Two agents hit the session limit mid-turn and were resumed with a narrowed prompt after the reset.
+  - Headless smoke runs on `claude-opus-5-5` can be refused by the `reasoning_extraction` safeguard. `claude-sonnet-5` at medium effort ran cleanly.

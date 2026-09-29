@@ -37,7 +37,7 @@ Or just ask: "what can I learn from `<repo>`?"
 
 A GitHub URL is shallow-cloned into your OS temp directory for the run and deleted when it ends.
 
-The skill asks you twice: once to correct how it understood your project, and once to pick lessons from the brief. The only file it writes in your project is the report.
+The skill asks you twice: once to correct how it understood your project, and once to pick lessons from the brief. If your project is empty or only has a README, it first asks about your goals. In your project it writes only the report and one ticket per lesson you adopt.
 
 ## License
 

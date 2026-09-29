@@ -6,7 +6,7 @@ A lesson is a pattern in the sense of Alexander's *A Pattern Language*: a soluti
 - **Context**: where the source uses it, in one or two sentences.
 - **Forces**: the pressures that make it pay off in the source, such as scale, team size, a failure it prevents, or a tool it relies on. This field decides transfer, so name each force concretely.
 - **Solution**: what the source does, described as a practice. Quote at most a few lines of source code, and only when prose cannot carry the idea.
-- **Evidence**: the source location as `path:line`.
+- **Evidence**: the source location as `path:line`, or as the permalink step 2 of `SKILL.md` defines when the source is a GitHub URL.
 - **Label**: *match* (the target shares every force), *partial* (it shares some, or would after a small change), or *no* (a force is missing, so adopting it would be cargo cult), with a one-line reason naming the force.
 - **Payoff** and **Cost**, for *match* and *partial* only: payoff as what the target gains in one sentence, cost as `S`, `M` or `L`.
 

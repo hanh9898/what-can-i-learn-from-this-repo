@@ -63,3 +63,4 @@
   7. Run `git status --porcelain`. It must list only `docs/lessons/`.
   8. Optional: in a fresh session, run `$absorb /tmp/mp-skills` to confirm the explicit mention in the README.
   9. Record the result here, tick criterion 3, and set the status to `resolved`.
+- **Wave 1 review decision (user, 2026-09-29)**: `CODING_STANDARDS.md` "Reachable files" now covers only files an agent reads. Harness metadata the harness reads itself, such as `agents/openai.yaml`, needs no link. This closes the hard Standards finding above.
