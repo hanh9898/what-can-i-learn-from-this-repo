@@ -4,11 +4,11 @@
 
 **Blocked by:** 01
 
-**Status:** ready-for-human
+**Status:** resolved
 
 - [x] Codex metadata ships inside the skill folder and marks the skill as implicitly invocable.
 - [x] The README has a Codex install section.
-- [ ] One manual smoke run on Codex fires the skill and completes with the dimensions swept sequentially. The result is recorded in this ticket's comments.
+- [ ] ~~One manual smoke run on Codex fires the skill and completes with the dimensions swept sequentially. The result is recorded in this ticket's comments.~~ Dropped by the user.
 
 ## Comments
 
@@ -64,3 +64,4 @@
   8. Optional: in a fresh session, run `$absorb /tmp/mp-skills` to confirm the explicit mention in the README.
   9. Record the result here, tick criterion 3, and set the status to `resolved`.
 - **Wave 1 review decision (user, 2026-09-29)**: `CODING_STANDARDS.md` "Reachable files" now covers only files an agent reads. Harness metadata the harness reads itself, such as `agents/openai.yaml`, needs no link. This closes the hard Standards finding above.
+- **Closed by the user (2026-09-29)**: criterion 3, the manual smoke run on Codex, is dropped and was never run. Criteria 1–2 are done. Codex support is therefore unverified on a real Codex install: the metadata, the install steps, the `$absorb` mention and the sequential-sweep fallback have all been checked only by reading them. The 9 steps above remain the way to verify them later.
